@@ -1,39 +1,35 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { SplashScreen, Stack } from "expo-router";
+import { useFonts } from "expo-font";
+import { useEffect } from "react";
+import "./global.css";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+const RootLayout = () => {
+  const [fontsLoaded, error] = useFonts({
+    "Roboto-Mono": require("@/assets/fonts/RobotoMono-Regular.ttf"),
+    "Space-Mono": require("@/assets/fonts/SpaceMono-Regular.ttf"),
   });
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    if (error) throw error;
+    if (fontsLoaded) SplashScreen.hideAsync();
+  }, [error, fontsLoaded]);
 
-  if (!loaded) {
-    return null;
-  }
+  if (!fontsLoaded) return null;
+  if (!fontsLoaded && !error) return null;
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="(modal)/adjust-meditation-duration"
+        options={{ headerShown: false, presentation: "modal" }}
+      />
+    </Stack>
   );
-}
+};
+
+export default RootLayout;

@@ -1,45 +1,50 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { Tabs } from "expo-router";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Entypo from "@expo/vector-icons/Entypo";
+import Colors from "@/constants/Colors";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveTintColor: Colors.grey,
+        tabBarStyle: {
+          height: 70,
+          paddingTop: 5,
+        },
+        tabBarLabelStyle: {
+          fontSize: 14,
+          fontFamily: "Roboto-Mono",
+          marginTop: 1,
+        },
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="meditate"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarLabel: "Meditate",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="flower-tulip"
+              size={25}
+              color={color}
+            />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="affirmations"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarLabel: "Affirmations",
+          tabBarIcon: ({ color }) => (
+            <Entypo name="open-book" size={25} color={color} />
+          ),
         }}
       />
     </Tabs>
   );
-}
+};
+
+export default TabsLayout;
