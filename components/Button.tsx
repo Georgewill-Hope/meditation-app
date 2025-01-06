@@ -4,8 +4,8 @@ import React from "react";
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  containerStyles: string;
-  textStyles: string;
+  containerStyles?: string;
+  textStyles?: string;
 }
 
 const Button = ({
@@ -17,9 +17,9 @@ const Button = ({
   return (
     <Pressable
       onPress={onPress}
-      className={` ${containerStyles} bg-white py-4`}
+      className={`w-full bg-white py-4 rounded-lg ${containerStyles}`}
     >
-      <Text className={`${textStyles} font-smono text-lg`}>{title}</Text>
+      <Text className={`${textStyles} font-smono text-lg text-center`}>{title}</Text>
     </Pressable>
   );
 };

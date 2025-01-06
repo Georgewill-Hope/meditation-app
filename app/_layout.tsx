@@ -1,4 +1,5 @@
 import { SplashScreen, Stack } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import "./global.css";
@@ -26,8 +27,13 @@ const RootLayout = () => {
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
         name="(modal)/adjust-meditation-duration"
-        options={{ headerShown: false, presentation: "modal" }}
+        options={{
+          headerShown: false,
+          presentation: "modal",
+          animation: "slide_from_right",
+        }}
       />
+      <StatusBar style="light" />
     </Stack>
   );
 };

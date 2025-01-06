@@ -2,7 +2,7 @@ import { View, Text, ImageBackground } from "react-native";
 import beachImage from "@/constants/meditation-images";
 import CustomGradient from "@/components/CustomGradient";
 import Button from "@/components/Button";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 const Home = () => {
@@ -24,9 +24,7 @@ const Home = () => {
           </View>
           <Button
             title="Get Started"
-            textStyles="text-center"
-            containerStyles="w-full rounded-lg"
-            onPress={() => router.push("/adjust-meditation-duration")}
+            onPress={() => router.push("/meditate")}
           />
         </View>
         <StatusBar style="light" />

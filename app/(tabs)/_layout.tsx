@@ -13,7 +13,11 @@ const TabsLayout = () => {
         tabBarStyle: {
           height: 70,
           paddingTop: 5,
+          backgroundColor: Colors.whiteSmoke,
+          borderColor: "green",
+          borderTopWidth:3,
         },
+
         tabBarLabelStyle: {
           fontSize: 14,
           fontFamily: "Roboto-Mono",
