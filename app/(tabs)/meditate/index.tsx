@@ -24,7 +24,7 @@ const Meditate = () => {
             title={item.title}
             image={MEDITATION_IMAGES[index]}
             containerStyles="h-56 mb-7"
-            onPress={() => router.push(`/meditate/${item.title}`)}
+            onPress={() => router.push(`/meditate/${item.id}`)}
           />
         )}
         showsVerticalScrollIndicator={false}
