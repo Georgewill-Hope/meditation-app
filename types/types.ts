@@ -8,3 +8,9 @@ export type GalleryPreviewData = {
   text: string;
   image: any;
 };
+
+
+export interface FormDataProps {
+  email: string;
+  password: string;
+}

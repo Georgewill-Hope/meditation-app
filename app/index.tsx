@@ -1,5 +1,5 @@
 import { View, Text, ImageBackground } from "react-native";
-import beachImage from "@/constants/meditation-images";
+import MEDITATION_IMAGES from "@/constants/meditation-images";
 import CustomGradient from "@/components/CustomGradient";
 import Button from "@/components/Button";
 import { Link, router } from "expo-router";
@@ -8,7 +8,7 @@ import { StatusBar } from "expo-status-bar";
 const Home = () => {
   return (
     <ImageBackground
-      source={beachImage[3]}
+      source={MEDITATION_IMAGES[3]}
       resizeMode="cover"
       className="flex-1 w-full"
     >
@@ -24,7 +24,7 @@ const Home = () => {
           </View>
           <Button
             title="Get Started"
-            onPress={() => router.push("/meditate")}
+            onPress={() => router.push("/sign-in")}
           />
         </View>
         <StatusBar style="light" />

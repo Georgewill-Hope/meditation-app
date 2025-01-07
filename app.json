@@ -4,7 +4,7 @@
     "slug": "meditation-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/simpleMeditationLogo.png",
+    "icon": "./assets/images/splash.avif",
     "scheme": "meditation-app",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
