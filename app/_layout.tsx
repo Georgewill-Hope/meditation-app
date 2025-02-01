@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import "./global.css";
+import GlobalContextProvider from "@/context/adjust-meditation-duration";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -21,20 +22,22 @@ const RootLayout = () => {
   if (!fontsLoaded && !error) return null;
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="(modal)/adjust-meditation-duration"
-        options={{
-          headerShown: false,
-          presentation: "modal",
-          animation: "slide_from_right",
-        }}
-      />
-      <StatusBar style="light" />
-    </Stack>
+    <GlobalContextProvider>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="(modal)/adjust-meditation-duration"
+          options={{
+            headerShown: false,
+            presentation: "modal",
+            animation: "slide_from_right",
+          }}
+        />
+        <StatusBar style="light" />
+      </Stack>
+    </GlobalContextProvider>
   );
 };
 

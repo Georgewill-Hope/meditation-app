@@ -7,12 +7,15 @@ import CustomInput from "@/components/CustomInput";
 import { useState } from "react";
 import { MaterialIcons } from "@expo/vector-icons";
 import Button from "@/components/Button";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 const SingIn = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(true);
+  const handleLogin = async () => {
+    router.push("/meditate");
+  };
   return (
     <ImageBackground
       source={OTHER_IMAGES.stone}
@@ -58,11 +61,15 @@ const SingIn = () => {
             <Button
               title="LOGIN"
               containerStyles="mt-10 shadow"
-              onPress={() => {}}
+              onPress={handleLogin}
             />
             <View className="flex-row items-center justify-between mt-3">
-              <Text className="text-lg font-smono">{"Don't have an accout?"}</Text>
-              <Link href="/sign-up" className="text-lg font-smono underline">SignUp</Link>
+              <Text className="text-lg font-smono">
+                {"Don't have an account?"}
+              </Text>
+              <Link href="/sign-up" className="text-lg font-smono underline">
+                SignUp
+              </Link>
             </View>
           </View>
         </View>

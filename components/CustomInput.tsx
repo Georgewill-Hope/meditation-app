@@ -33,9 +33,9 @@ const CustomInput = ({
           className=" border-b-black/75 border-b flex-1 text-lg font-smono p-0 h-full w-full pr-9"
           value={value}
           onChangeText={setValue}
-          secureTextEntry={placeholder !== "Email" && showPassword}
+          secureTextEntry={placeholder === "Password" && showPassword}
         />
-        {placeholder !== "Email" && showPassword ? (
+        {placeholder === "Password" && showPassword ? (
           <AntDesign
             name="eye"
             size={24}

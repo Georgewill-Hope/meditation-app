@@ -2,7 +2,7 @@ import { View, Text, ImageBackground } from "react-native";
 import MEDITATION_IMAGES from "@/constants/meditation-images";
 import CustomGradient from "@/components/CustomGradient";
 import Button from "@/components/Button";
-import { Link, router } from "expo-router";
+import {router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 const Home = () => {
